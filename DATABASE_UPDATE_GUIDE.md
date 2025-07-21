@@ -6,6 +6,7 @@ The current database schema only supports 'Yoga' and 'Meditation' categories, bu
 ## Solution
 Run the migration script in your Supabase SQL editor to update the database schema.
 
+
 ## Steps to Fix
 
 1. **Go to your Supabase Dashboard**

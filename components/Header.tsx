@@ -48,17 +48,18 @@ export default function Header() {
             >
               Events & Classes
             </Link>
-            <Link
-              href="/about"
-              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-colors duration-200"
-            >
-              About
-            </Link>
+           
             <Link
               href="/resources"
               className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-colors duration-200"
             >
               Resources
+            </Link>
+            <Link
+              href="/about"
+              className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-colors duration-200"
+            >
+              About
             </Link>
             <Link
               href="/admin/login"

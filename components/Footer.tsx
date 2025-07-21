@@ -7,11 +7,12 @@ export default function Footer() {
     <footer className="bg-gradient-to-br from-gray-50 via-purple-50 to-gray-100 dark:from-gray-900 dark:via-purple-900/20 dark:to-gray-800 text-gray-900 dark:text-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Main Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6">
           {/* Brand Section */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-8 h-8 sm:w-10 sm:h-10 relative">
+                <Link href="/">
                 <Image
                   src="/logo.svg"
                   alt="Cores of Light Logo"
@@ -19,6 +20,7 @@ export default function Footer() {
                   height={50}
                   className="w-full h-full"
                 />
+                </Link>
               </div>
               <div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
@@ -85,13 +87,23 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-purple-600 dark:text-purple-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-                  thasos111@gmail.com
+                  <Link
+                    href="mailto:thasos111@gmail.com"
+                    className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                  >
+                    thasos111@gmail.com
+                  </Link>
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-purple-600 dark:text-purple-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-                  +357 000000000
+                  <Link
+                    href="tel:+357000000000"
+                    className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
+                  >
+                    +357 000000000
+                  </Link>
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -102,7 +114,7 @@ export default function Footer() {
                     target="_blank"
                     className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200"
                   >
-                    Feidiou 14, Lemesos 3075
+                    Feidiou 14, Lemesos 3075, Cyprus
                   </Link>
                 </span>
               </div>
@@ -114,7 +126,7 @@ export default function Footer() {
         <div className="border-t border-gray-200 dark:border-gray-700 mt-8 pt-6 sm:pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm text-center sm:text-left">
-              © 2024 Cores of Light. All rights reserved.
+              © {new Date().getFullYear()} Cores of Light. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link

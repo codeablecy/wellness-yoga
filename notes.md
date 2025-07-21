@@ -1,0 +1,1 @@
+1: The "Add to Calendar" button is getting truncated and the layout is cramped. Let me fix this by using just icons without text to make it cleaner and more compact.

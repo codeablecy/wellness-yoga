@@ -1,0 +1,118 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient definitions -->
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F7CAC;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#91B3BC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B8E8E;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="coreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C5F2D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4F7CAC;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F4F8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8D4E3;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Filter for subtle glow -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle with subtle gradient -->
+  <circle cx="60" cy="60" r="58" fill="url(#highlightGradient)" stroke="url(#leafGradient)" stroke-width="2" opacity="0.1"/>
+  
+  <!-- Core spiral pattern - representing the journey inward -->
+  <g transform="translate(60, 60)">
+    <!-- Inner core -->
+    <circle cx="0" cy="0" r="8" fill="url(#coreGradient)" opacity="0.9"/>
+    
+    <!-- Spiral leaves - each representing a step in spiritual growth -->
+    <!-- Layer 1: Innermost leaves -->
+    <path d="M-6,-6 Q-12,-12 -18,-6 Q-12,0 -6,6 Q0,12 6,6 Q12,0 6,-6 Q0,-12 -6,-6" 
+          fill="url(#leafGradient)" opacity="0.8" transform="rotate(0)"/>
+    <path d="M-6,-6 Q-12,-12 -18,-6 Q-12,0 -6,6 Q0,12 6,6 Q12,0 6,-6 Q0,-12 -6,-6" 
+          fill="url(#leafGradient)" opacity="0.8" transform="rotate(90)"/>
+    <path d="M-6,-6 Q-12,-12 -18,-6 Q-12,0 -6,6 Q0,12 6,6 Q12,0 6,-6 Q0,-12 -6,-6" 
+          fill="url(#leafGradient)" opacity="0.8" transform="rotate(180)"/>
+    <path d="M-6,-6 Q-12,-12 -18,-6 Q-12,0 -6,6 Q0,12 6,6 Q12,0 6,-6 Q0,-12 -6,-6" 
+          fill="url(#leafGradient)" opacity="0.8" transform="rotate(270)"/>
+    
+    <!-- Layer 2: Middle leaves -->
+    <path d="M-8,-8 Q-16,-16 -24,-8 Q-16,0 -8,8 Q0,16 8,8 Q16,0 8,-8 Q0,-16 -8,-8" 
+          fill="url(#leafGradient)" opacity="0.7" transform="rotate(45)"/>
+    <path d="M-8,-8 Q-16,-16 -24,-8 Q-16,0 -8,8 Q0,16 8,8 Q16,0 8,-8 Q0,-16 -8,-8" 
+          fill="url(#leafGradient)" opacity="0.7" transform="rotate(135)"/>
+    <path d="M-8,-8 Q-16,-16 -24,-8 Q-16,0 -8,8 Q0,16 8,8 Q16,0 8,-8 Q0,-16 -8,-8" 
+          fill="url(#leafGradient)" opacity="0.7" transform="rotate(225)"/>
+    <path d="M-8,-8 Q-16,-16 -24,-8 Q-16,0 -8,8 Q0,16 8,8 Q16,0 8,-8 Q0,-16 -8,-8" 
+          fill="url(#leafGradient)" opacity="0.7" transform="rotate(315)"/>
+    
+    <!-- Layer 3: Outer leaves -->
+    <path d="M-10,-10 Q-20,-20 -30,-10 Q-20,0 -10,10 Q0,20 10,10 Q20,0 10,-10 Q0,-20 -10,-10" 
+          fill="url(#leafGradient)" opacity="0.6" transform="rotate(22.5)"/>
+    <path d="M-10,-10 Q-20,-20 -30,-10 Q-20,0 -10,10 Q0,20 10,10 Q20,0 10,-10 Q0,-20 -10,-10" 
+          fill="url(#leafGradient)" opacity="0.6" transform="rotate(67.5)"/>
+    <path d="M-10,-10 Q-20,-20 -30,-10 Q-20,0 -10,10 Q0,20 10,10 Q20,0 10,-10 Q0,-20 -10,-10" 
+          fill="url(#leafGradient)" opacity="0.6" transform="rotate(112.5)"/>
+    <path d="M-10,-10 Q-20,-20 -30,-10 Q-20,0 -10,10 Q0,20 10,10 Q20,0 10,-10 Q0,-20 -10,-10" 
+          fill="url(#leafGradient)" opacity="0.6" transform="rotate(157.5)"/>
+    <path d="M-10,-10 Q-20,-20 -30,-10 Q-20,0 -10,10 Q0,20 10,10 Q20,0 10,-10 Q0,-20 -10,-10" 
+          fill="url(#leafGradient)" opacity="0.6" transform="rotate(202.5)"/>
+    <path d="M-10,-10 Q-20,-20 -30,-10 Q-20,0 -10,10 Q0,20 10,10 Q20,0 10,-10 Q0,-20 -10,-10" 
+          fill="url(#leafGradient)" opacity="0.6" transform="rotate(247.5)"/>
+    <path d="M-10,-10 Q-20,-20 -30,-10 Q-20,0 -10,10 Q0,20 10,10 Q20,0 10,-10 Q0,-20 -10,-10" 
+          fill="url(#leafGradient)" opacity="0.6" transform="rotate(292.5)"/>
+    <path d="M-10,-10 Q-20,-20 -30,-10 Q-20,0 -10,10 Q0,20 10,10 Q20,0 10,-10 Q0,-20 -10,-10" 
+          fill="url(#leafGradient)" opacity="0.6" transform="rotate(337.5)"/>
+    
+    <!-- Layer 4: Outermost leaves -->
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(11.25)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(33.75)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(56.25)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(78.75)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(101.25)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(123.75)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(146.25)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(168.75)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(191.25)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(213.75)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(236.25)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(258.75)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(281.25)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(303.75)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(326.25)"/>
+    <path d="M-12,-12 Q-24,-24 -36,-12 Q-24,0 -12,12 Q0,24 12,12 Q24,0 12,-12 Q0,-24 -12,-12" 
+          fill="url(#leafGradient)" opacity="0.5" transform="rotate(348.75)"/>
+  </g>
+  
+  <!-- Subtle glow effect -->
+  <circle cx="60" cy="60" r="55" fill="none" stroke="url(#leafGradient)" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+  
+  <!-- Inner light core - representing the spiritual center -->
+  <circle cx="60" cy="60" r="4" fill="#E8F4F8" opacity="0.9"/>
+  <circle cx="60" cy="60" r="2" fill="#FFFFFF" opacity="1"/>
+</svg> 

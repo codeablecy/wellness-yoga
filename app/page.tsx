@@ -30,22 +30,26 @@ export default function HomePage() {
       <Hero />
 
       {/* Services Overview Section */}
-      <section className="py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        {/* Organic Background Elements */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-purple-200/20 to-pink-200/20 dark:from-purple-800/10 dark:to-pink-800/10 rounded-full blur-3xl -translate-x-48 -translate-y-48"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-br from-blue-200/20 to-cyan-200/20 dark:from-blue-800/10 dark:to-cyan-800/10 rounded-full blur-3xl translate-x-40 translate-y-40"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-8 leading-tight">
               Transform Your Life Through{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-400 dark:to-purple-600">
                 Spiritual Awakening
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Experience profound healing and self-empowerment through our
               comprehensive range of spiritual and holistic services.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
               {
                 icon: Heart,
@@ -53,6 +57,8 @@ export default function HomePage() {
                 description:
                   "Experience profound healing and self-empowerment through energetic healing techniques and spiritual awakening guidance.",
                 color: "from-red-500 to-pink-500",
+                bgColor:
+                  "from-red-50 to-pink-50 dark:from-red-900/10 dark:to-pink-900/10",
               },
               {
                 icon: Lightbulb,
@@ -60,6 +66,8 @@ export default function HomePage() {
                 description:
                   "Navigate your path with clarity and purpose, becoming your own energetic healer and conscious teacher.",
                 color: "from-yellow-500 to-orange-500",
+                bgColor:
+                  "from-yellow-50 to-orange-50 dark:from-yellow-900/10 dark:to-orange-900/10",
               },
               {
                 icon: Sparkles,
@@ -67,6 +75,8 @@ export default function HomePage() {
                 description:
                   "Empower yourself with conscious teachings, harnessing the wisdom of inner work and spiritual evolution.",
                 color: "from-purple-500 to-indigo-500",
+                bgColor:
+                  "from-purple-50 to-indigo-50 dark:from-purple-900/10 dark:to-indigo-900/10",
               },
               {
                 icon: Users,
@@ -74,6 +84,8 @@ export default function HomePage() {
                 description:
                   "Connect with like-minded souls and create supportive spiritual communities for collective growth.",
                 color: "from-green-500 to-teal-500",
+                bgColor:
+                  "from-green-50 to-teal-50 dark:from-green-900/10 dark:to-teal-900/10",
               },
               {
                 icon: Book,
@@ -81,6 +93,8 @@ export default function HomePage() {
                 description:
                   "Access curated spiritual resources and materials to deepen your practice and accelerate your journey.",
                 color: "from-blue-500 to-cyan-500",
+                bgColor:
+                  "from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10",
               },
               {
                 icon: Award,
@@ -88,21 +102,28 @@ export default function HomePage() {
                 description:
                   "Develop your inner strength and become your own source of light and transformation.",
                 color: "from-violet-500 to-purple-500",
+                bgColor:
+                  "from-violet-50 to-purple-50 dark:from-violet-900/10 dark:to-purple-900/10",
               },
             ].map((service, index) => (
               <div key={index} className="group relative">
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 h-full hover:shadow-lg dark:hover:shadow-gray-900/20 transition-all duration-300 hover:-translate-y-1">
-                  <div
-                    className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <service.icon className="w-8 h-8 text-white" />
+                <div
+                  className={`relative overflow-hidden bg-gradient-to-br ${service.bgColor} rounded-3xl p-8 h-full transition-all duration-500 hover:scale-105 hover:shadow-2xl`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-white/30 dark:from-gray-800/50 dark:to-gray-800/30 backdrop-blur-sm rounded-3xl"></div>
+                  <div className="relative z-10">
+                    <div
+                      className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                    >
+                      <service.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {service.description}
-                  </p>
                 </div>
               </div>
             ))}
@@ -111,89 +132,94 @@ export default function HomePage() {
       </section>
 
       {/* Featured Events Section */}
-      <section className="py-16 sm:py-24 ">
+      <section className="py-24 sm:py-32 relative">
         <div className="max-w-full mx-auto">
           <FeaturedEvents className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white" />
         </div>
       </section>
 
       {/* About Preview Section */}
-      <section className="py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        {/* Organic Background Elements */}
+        <div className="absolute top-1/2 left-0 w-64 h-64 bg-gradient-to-br from-green-200/20 to-emerald-200/20 dark:from-green-800/10 dark:to-emerald-800/10 rounded-full blur-3xl -translate-x-32 -translate-y-32"></div>
+        <div className="absolute bottom-0 right-1/2 w-80 h-80 bg-gradient-to-br from-purple-200/20 to-pink-200/20 dark:from-purple-800/10 dark:to-pink-800/10 rounded-full blur-3xl translate-x-40 translate-y-40"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-8 leading-tight">
                 About{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-400 dark:to-purple-600">
                   Cores of Light
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 leading-relaxed">
                 We are dedicated to spiritual awakening, energy healing, and
                 conscious teaching. Our mission is to help you become your own
                 source of light and empowerment through dedicated inner work.
               </p>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
-                    <Heart className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              <div className="space-y-6 mb-10">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                    <Heart className="w-6 h-6 text-white" />
                   </div>
-                  <span className="text-gray-900 dark:text-white font-medium">
+                  <span className="text-lg text-gray-900 dark:text-white font-medium">
                     Energy Healing & Transformation
                   </span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
-                    <Lightbulb className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center shadow-lg">
+                    <Lightbulb className="w-6 h-6 text-white" />
                   </div>
-                  <span className="text-gray-900 dark:text-white font-medium">
+                  <span className="text-lg text-gray-900 dark:text-white font-medium">
                     Conscious Teaching & Guidance
                   </span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
-                    <Globe className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg">
+                    <Globe className="w-6 h-6 text-white" />
                   </div>
-                  <span className="text-gray-900 dark:text-white font-medium">
+                  <span className="text-lg text-gray-900 dark:text-white font-medium">
                     Global Impact & Community
                   </span>
                 </div>
               </div>
               <Link
                 href="/about"
-                className="inline-flex items-center space-x-2 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors duration-300"
+                className="inline-flex items-center space-x-3 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold text-lg transition-colors duration-300 group"
               >
                 <span>Learn More About Us</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-purple-600 dark:bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Heart className="w-6 h-6 text-white" />
+              <div className="relative overflow-hidden bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-purple-900/10 dark:to-pink-900/10 rounded-3xl p-10">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-white/30 dark:from-gray-800/50 dark:to-gray-800/30 backdrop-blur-sm rounded-3xl"></div>
+                <div className="relative z-10 space-y-8">
+                  <div className="flex items-start space-x-6">
+                    <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <Heart className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
                         Our Philosophy
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
                         We believe in the power of community, excellence in
                         teaching, and creating global impact through spiritual
                         awakening.
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-purple-500 dark:bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Users className="w-6 h-6 text-white" />
+                  <div className="flex items-start space-x-6">
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <Users className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
                         Community Focus
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
                         Building supportive spiritual communities that foster
                         collective growth and transformation.
                       </p>
@@ -207,23 +233,27 @@ export default function HomePage() {
       </section>
 
       {/* Resources Preview Section */}
-      <section className="py-16 sm:py-24 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        {/* Organic Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200/20 to-cyan-200/20 dark:from-blue-800/10 dark:to-cyan-800/10 rounded-full blur-3xl translate-x-48 -translate-y-48"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-green-200/20 to-emerald-200/20 dark:from-green-800/10 dark:to-emerald-800/10 rounded-full blur-3xl -translate-x-40 translate-y-40"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-8 leading-tight">
               Spiritual{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-400 dark:to-purple-600">
                 Resources
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Discover curated resources to support your spiritual awakening
               journey. From energy healing guides to conscious teaching
               materials.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
               {
                 title: "Energy Healing Fundamentals",
@@ -231,6 +261,8 @@ export default function HomePage() {
                   "Learn the basics of energy healing and how to work with your own energy field for healing and transformation.",
                 category: "Energy Healing",
                 type: "Guide",
+                bgColor:
+                  "from-red-50 to-pink-50 dark:from-red-900/10 dark:to-pink-900/10",
               },
               {
                 title: "Conscious Teaching Methods",
@@ -238,6 +270,8 @@ export default function HomePage() {
                   "Discover how to become a conscious teacher and guide others on their spiritual journey with wisdom and compassion.",
                 category: "Teaching",
                 type: "Course",
+                bgColor:
+                  "from-yellow-50 to-orange-50 dark:from-yellow-900/10 dark:to-orange-900/10",
               },
               {
                 title: "Spiritual Awakening Practices",
@@ -245,136 +279,46 @@ export default function HomePage() {
                   "Essential practices and techniques to support your spiritual awakening and deepen your connection to your higher self.",
                 category: "Awakening",
                 type: "Practice Guide",
+                bgColor:
+                  "from-purple-50 to-indigo-50 dark:from-purple-900/10 dark:to-indigo-900/10",
               },
             ].map((resource, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:shadow-lg dark:hover:shadow-gray-900/20 transition-all duration-300 hover:-translate-y-1"
+                className={`group relative overflow-hidden bg-gradient-to-br ${resource.bgColor} rounded-3xl p-8 hover:scale-105 transition-all duration-500 hover:shadow-2xl`}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-medium text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 px-3 py-1 rounded-full">
-                    {resource.category}
-                  </span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
-                    {resource.type}
-                  </span>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-white/30 dark:from-gray-800/50 dark:to-gray-800/30 backdrop-blur-sm rounded-3xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-sm font-semibold text-purple-600 dark:text-purple-400 bg-purple-100/50 dark:bg-purple-900/30 px-4 py-2 rounded-full backdrop-blur-sm">
+                      {resource.category}
+                    </span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      {resource.type}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                    {resource.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {resource.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                  {resource.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                  {resource.description}
-                </p>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Link
               href="/resources"
-              className="inline-flex items-center space-x-2 bg-purple-600 dark:bg-purple-500 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-700 dark:hover:bg-purple-600 transition-colors duration-300"
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-600 to-purple-700 dark:from-purple-500 dark:to-purple-600 text-white px-10 py-4 rounded-2xl font-semibold hover:from-purple-700 hover:to-purple-800 dark:hover:from-purple-600 dark:hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl group"
             >
               <span>Explore All Resources</span>
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
         </div>
       </section>
-
-      {/* Contact & Location Section */}
-      {/* <section className="py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              Connect With{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-400 dark:to-purple-600">
-                Us
-              </span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Ready to begin your spiritual awakening journey? Get in touch with
-              us to learn more about our services and upcoming events.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                Contact Information
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <Mail className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                  <div>
-                    <p className="font-medium text-gray-900 dark:text-white">Email</p>
-                    <p className="text-gray-600 dark:text-gray-300">thasos111@gmail.com</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Phone className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                  <div>
-                    <p className="font-medium text-gray-900 dark:text-white">Phone</p>
-                    <p className="text-gray-600 dark:text-gray-300">+357 000000000</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <MapPin className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                  <div>
-                    <p className="font-medium text-gray-900 dark:text-white">Location</p>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Feidiou 14, Lemesos 3075
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                Quick Actions
-              </h3>
-              <div className="space-y-4">
-                <Link
-                  href="/events"
-                  className="flex items-center justify-between p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors duration-300"
-                >
-                  <div className="flex items-center space-x-3">
-                    <Calendar className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="font-medium text-gray-900 dark:text-white">
-                      View Events
-                    </span>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                </Link>
-                <Link
-                  href="/about"
-                  className="flex items-center justify-between p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors duration-300"
-                >
-                  <div className="flex items-center space-x-3">
-                    <Sparkles className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="font-medium text-gray-900 dark:text-white">
-                      Learn About Us
-                    </span>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                </Link>
-                <Link
-                  href="/resources"
-                  className="flex items-center justify-between p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors duration-300"
-                >
-                  <div className="flex items-center space-x-3">
-                    <Book className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="font-medium text-gray-900 dark:text-white">
-                      Browse Resources
-                    </span>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </main>
   );
 }

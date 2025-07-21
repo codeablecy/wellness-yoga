@@ -321,8 +321,8 @@ export default function EventForm({
           >
             Unsplash
           </a>{" "}
-          (e.g., "https://unsplash.com/image.jpg")
-          1: Right click on the image 2: Click "Copy Image Address" 3: Paste it in
+          (e.g., "https://unsplash.com/image.jpg") 1: Right click on the image
+          2: Click "Copy Image Address" 3: Paste it in
         </p>
       </div>
 

@@ -19,14 +19,14 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero.jpg"
+          src="/hero04.jpg"
           alt="Spiritual Awakening Background"
           fill
           className="object-cover"
           priority
         />
         {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
       </div>
 
       {/* Animated light particles - reduced on mobile */}

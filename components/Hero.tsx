@@ -1,6 +1,7 @@
 "use client";
 
 import { Calendar, Heart, Lightbulb, Sparkles } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -59,14 +60,18 @@ export default function Hero() {
 
           {/* Call to action buttons - improved mobile layout */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12">
+            <Link href="/events">
             <button className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
               <Calendar className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
               Explore Events
             </button>
+            </Link>
+            <Link href="/resources">
             <button className="w-full sm:w-auto bg-transparent border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-white hover:text-purple-900 transition-all duration-300">
               <Sparkles className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
               Begin Your Journey
             </button>
+            </Link>
           </div>
 
           {/* Feature highlights - improved mobile layout */}

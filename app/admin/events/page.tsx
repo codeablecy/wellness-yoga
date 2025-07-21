@@ -1,7 +1,11 @@
 import EventsAdmin from "@/components/EventsAdmin";
 import LogoutButton from "@/components/LogoutButton";
+import { getEvents } from "@/lib/supabase";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
+
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = "force-dynamic";
 
 export default async function AdminEventsPage() {
   const supabase = await createClient();
@@ -13,6 +17,9 @@ export default async function AdminEventsPage() {
   if (!user) {
     redirect("/admin/login");
   }
+
+  // Fetch events server-side for initial load
+  const initialEvents = await getEvents();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
@@ -27,7 +34,7 @@ export default async function AdminEventsPage() {
           <LogoutButton />
         </div>
 
-        <EventsAdmin />
+        <EventsAdmin initialEvents={initialEvents} />
       </div>
     </div>
   );

@@ -1,18 +1,21 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import EventCard from "./EventCard"
-import type { Event } from "@/types/event"
+import type { Event, EventCategory } from "@/types/event";
+import { EVENT_CATEGORIES } from "@/types/event";
+import { useState } from "react";
+import EventCard from "./EventCard";
 
 interface EventsListProps {
-  initialEvents: Event[]
+  initialEvents: Event[];
 }
 
 export default function EventsList({ initialEvents }: EventsListProps) {
-  const [events] = useState<Event[]>(initialEvents)
-  const [filter, setFilter] = useState<"All" | "Yoga" | "Meditation">("All")
+  const [events] = useState<Event[]>(initialEvents);
+  const [filter, setFilter] = useState<"All" | EventCategory>("All");
 
-  const filteredEvents = events.filter((event) => filter === "All" || event.category === filter)
+  const filteredEvents = events.filter(
+    (event) => filter === "All" || event.category === filter
+  );
 
   return (
     <div>
@@ -20,13 +23,16 @@ export default function EventsList({ initialEvents }: EventsListProps) {
       <div className="mb-8 flex justify-center">
         <select
           value={filter}
-          onChange={(e) => setFilter(e.target.value as "All" | "Yoga" | "Meditation")}
+          onChange={(e) => setFilter(e.target.value as "All" | EventCategory)}
           className="px-6 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
           aria-label="Filter events by category"
         >
           <option value="All">All Events</option>
-          <option value="Yoga">Yoga</option>
-          <option value="Meditation">Meditation</option>
+          {EVENT_CATEGORIES.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -39,9 +45,11 @@ export default function EventsList({ initialEvents }: EventsListProps) {
 
       {filteredEvents.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">No events found for the selected category.</p>
+          <p className="text-gray-500 text-lg">
+            No events found for the selected category.
+          </p>
         </div>
       )}
     </div>
-  )
+  );
 }

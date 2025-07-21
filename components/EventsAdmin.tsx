@@ -6,19 +6,27 @@ import { useEffect, useState } from "react";
 import EventForm from "./EventForm";
 import EventTable from "./EventTable";
 
-export default function EventsAdmin() {
-  const [events, setEvents] = useState<Event[]>([]);
+interface EventsAdminProps {
+  initialEvents: Event[];
+}
+
+export default function EventsAdmin({ initialEvents }: EventsAdminProps) {
+  const [events, setEvents] = useState<Event[]>(initialEvents);
   const [editingEvent, setEditingEvent] = useState<Event | null>(null);
   const [showForm, setShowForm] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const supabase = createClient();
 
+  // Only fetch events if no initial events provided
   useEffect(() => {
-    fetchEvents();
-  }, []);
+    if (initialEvents.length === 0) {
+      fetchEvents();
+    }
+  }, [initialEvents.length]);
 
   const fetchEvents = async () => {
     try {
+      setLoading(true);
       const { data, error } = await supabase
         .from("events")
         .select("*")
@@ -37,12 +45,14 @@ export default function EventsAdmin() {
     }
   };
 
-  const handleEventCreated = (newEvent: Event) => {
+  const handleEventCreated = async (newEvent: Event) => {
     setEvents([...events, newEvent]);
     setShowForm(false);
+    // Revalidate the page to ensure data consistency
+    window.location.reload();
   };
 
-  const handleEventUpdated = (updatedEvent: Event) => {
+  const handleEventUpdated = async (updatedEvent: Event) => {
     setEvents(
       events.map((event) =>
         event.id === updatedEvent.id ? updatedEvent : event
@@ -50,10 +60,14 @@ export default function EventsAdmin() {
     );
     setEditingEvent(null);
     setShowForm(false);
+    // Revalidate the page to ensure data consistency
+    window.location.reload();
   };
 
-  const handleEventDeleted = (eventId: string) => {
+  const handleEventDeleted = async (eventId: string) => {
     setEvents(events.filter((event) => event.id !== eventId));
+    // Revalidate the page to ensure data consistency
+    window.location.reload();
   };
 
   const handleEdit = (event: Event) => {

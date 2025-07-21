@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     "spiritual awakening, energy healing, holistic wellness, yoga, meditation, self-discovery, conscious teaching, personal empowerment",
 };
 
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900/20">

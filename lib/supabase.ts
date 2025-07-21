@@ -1,19 +1,40 @@
 import type { Event } from "@/types/event"
-import { createClient } from '@supabase/supabase-js'
+import { createServerClient } from '@supabase/ssr'
+import { cookies } from 'next/headers'
 
-// Supabase client configuration
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+// Create server-side Supabase client
+export async function createServerSupabaseClient() {
+  const cookieStore = await cookies()
 
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error('Missing Supabase environment variables. Please check your .env.local file.')
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll()
+        },
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            )
+          } catch {
+            // The `setAll` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing
+            // user sessions.
+          }
+        },
+      },
+    }
+  )
 }
-
-export const supabase = createClient(supabaseUrl, supabaseKey)
 
 // Database operations
 export async function getEvents(): Promise<Event[]> {
   try {
+    const supabase = await createServerSupabaseClient()
+    
     const { data, error } = await supabase
       .from('events')
       .select('*')
@@ -33,6 +54,8 @@ export async function getEvents(): Promise<Event[]> {
 
 export async function createEvent(eventData: Omit<Event, "id">): Promise<Event> {
   try {
+    const supabase = await createServerSupabaseClient()
+    
     const { data, error } = await supabase
       .from('events')
       .insert([eventData])
@@ -53,6 +76,8 @@ export async function createEvent(eventData: Omit<Event, "id">): Promise<Event> 
 
 export async function updateEvent(id: string, eventData: Partial<Event>): Promise<Event> {
   try {
+    const supabase = await createServerSupabaseClient()
+    
     const { data, error } = await supabase
       .from('events')
       .update(eventData)
@@ -74,6 +99,8 @@ export async function updateEvent(id: string, eventData: Partial<Event>): Promis
 
 export async function deleteEvent(id: string): Promise<void> {
   try {
+    const supabase = await createServerSupabaseClient()
+    
     const { error } = await supabase
       .from('events')
       .delete()
@@ -91,5 +118,5 @@ export async function deleteEvent(id: string): Promise<void> {
 
 // Helper function to check if Supabase is properly configured
 export function isSupabaseConfigured(): boolean {
-  return !!(supabaseUrl && supabaseKey)
+  return !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
 }

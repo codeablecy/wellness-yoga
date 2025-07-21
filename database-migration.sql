@@ -1,61 +1,42 @@
--- Add price column to existing events table
--- This migration safely adds the price field to existing events table
+-- Migration to update events table schema
+-- Run this in your Supabase SQL editor
 
--- Add the price column if it doesn't exist
+-- First, drop the existing check constraint
+ALTER TABLE events DROP CONSTRAINT IF EXISTS events_category_check;
+
+-- Add the new check constraint with all categories
+ALTER TABLE events ADD CONSTRAINT events_category_check 
+CHECK (category IN (
+  'Yoga', 'Meditation', 'Pilates', 'Tai Chi', 'Qi Gong', 'Reiki', 
+  'Sound Healing', 'Aromatherapy', 'Crystal Healing', 'Chakra Balancing', 
+  'Breathwork', 'Mindfulness', 'Stress Relief', 'Energy Healing', 
+  'Holistic Wellness', 'Spiritual Counseling', 'Energy Mentoring', 
+  'Active-Spiritual Nutrition', 'Zhineng Qigong', 'Personal Empowerment', 
+  'Conscious Teaching', 'Energy Center Cleansing', 'Conscious Awakening', 
+  'Theosophy', 'Universal Healing', 'Self-Awareness', 'Harmonization'
+));
+
+-- Add price column if it doesn't exist
 DO $$ 
 BEGIN
-  IF NOT EXISTS (
-    SELECT 1 FROM information_schema.columns 
-    WHERE table_name = 'events' AND column_name = 'price'
-  ) THEN
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'events' AND column_name = 'price') THEN
     ALTER TABLE events ADD COLUMN price TEXT NOT NULL DEFAULT 'free';
   END IF;
 END $$;
 
--- Add the what_to_bring column if it doesn't exist
+-- Add what_to_bring column if it doesn't exist
 DO $$ 
 BEGIN
-  IF NOT EXISTS (
-    SELECT 1 FROM information_schema.columns 
-    WHERE table_name = 'events' AND column_name = 'what_to_bring'
-  ) THEN
-    ALTER TABLE events ADD COLUMN what_to_bring JSONB DEFAULT '[]'::jsonb;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'events' AND column_name = 'what_to_bring') THEN
+    ALTER TABLE events ADD COLUMN what_to_bring TEXT[] DEFAULT '{}';
   END IF;
 END $$;
 
--- Update the category constraint to include all wellness and spiritual categories
-ALTER TABLE events DROP CONSTRAINT IF EXISTS events_category_check;
-
-ALTER TABLE events ADD CONSTRAINT events_category_check 
-CHECK (category IN (
-  'Yoga',
-  'Meditation', 
-  'Pilates',
-  'Tai Chi',
-  'Qi Gong',
-  'Reiki',
-  'Sound Healing',
-  'Aromatherapy',
-  'Crystal Healing',
-  'Chakra Balancing',
-  'Breathwork',
-  'Mindfulness',
-  'Stress Relief',
-  'Energy Healing',
-  'Holistic Wellness',
-  'Spiritual Counseling',
-  'Energy Mentoring',
-  'Active-Spiritual Nutrition',
-  'Zhineng Qigong',
-  'Personal Empowerment',
-  'Conscious Teaching',
-  'Energy Center Cleansing',
-  'Conscious Awakening',
-  'Theosophy',
-  'Universal Healing',
-  'Self-Awareness',
-  'Harmonization'
-));
+-- Update existing records to have default values
+UPDATE events SET 
+  price = COALESCE(price, 'free'),
+  what_to_bring = COALESCE(what_to_bring, '{}')
+WHERE price IS NULL OR what_to_bring IS NULL;
 
 -- Add price constraint to ensure it's either a number or "free"
 ALTER TABLE events DROP CONSTRAINT IF EXISTS events_price_check;
